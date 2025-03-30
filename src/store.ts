@@ -19,9 +19,12 @@ async function getCryptos() {
     return result.data;
   }
 }
-export const useCryptoStore = create(() => ({
+export const useCryptoStore = create((set) => ({
+  cryptoCurrency: [],
   fetchCryptos: async () => {
     const cryptoCurrency = await getCryptos();
-    console.log(cryptoCurrency);
+    set(() => ({
+      cryptoCurrency,
+    }));
   },
 }));

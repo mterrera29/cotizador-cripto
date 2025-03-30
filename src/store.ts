@@ -14,12 +14,14 @@ async function getCryptos() {
       return res.Data.LIST;
     })
     .catch((err) => console.error(err));
-  console.log(data);
   const result = CryptoCurrencyResponseArray.safeParse(data);
-  console.log(result);
+  if (result.success) {
+    return result.data;
+  }
 }
 export const useCryptoStore = create(() => ({
-  fetchCryptos: () => {
-    getCryptos();
+  fetchCryptos: async () => {
+    const cryptoCurrency = await getCryptos();
+    console.log(cryptoCurrency);
   },
 }));

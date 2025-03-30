@@ -6,7 +6,7 @@ async function getCryptos() {
   const data = await fetch(url)
     .then(async (res) => {
       if (!res) {
-        throw new Error('no hay datos');
+        throw new Error('no hay datos aún');
       }
       return await res.json();
     })

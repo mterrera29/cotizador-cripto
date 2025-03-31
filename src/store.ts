@@ -1,5 +1,12 @@
 import { create } from 'zustand';
 import { CryptoCurrencyResponseArray } from './schema/cripto-schema';
+import { Cryptocurrency } from './types';
+
+type CryptoStore = {
+  cryptocurrencies: Cryptocurrency[];
+  fetchCryptos: () => Promise<void>;
+};
+
 async function getCryptos() {
   const url =
     'https://data-api.coindesk.com/asset/v1/top/list?page=1&page_size=20&sort_by=CIRCULATING_MKT_CAP_USD&sort_direction=DESC&groups=ID,BASIC,SUPPLY,PRICE,MKT_CAP,VOLUME,CHANGE,TOPLIST_RANK&toplist_quote_asset=USD&asset_type=TOKEN';
@@ -19,12 +26,12 @@ async function getCryptos() {
     return result.data;
   }
 }
-export const useCryptoStore = create((set) => ({
-  cryptoCurrency: [],
+export const useCryptoStore = create<CryptoStore>((set) => ({
+  cryptocurrencies: [],
   fetchCryptos: async () => {
-    const cryptoCurrency = await getCryptos();
+    const cryptocurrencies = await getCryptos();
     set(() => ({
-      cryptoCurrency,
+      cryptocurrencies,
     }));
   },
 }));

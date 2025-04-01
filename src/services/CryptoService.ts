@@ -1,4 +1,5 @@
 import { CryptoCurrencyResponseArray } from '../schema/cripto-schema';
+import { Pairs } from '../types';
 
 export async function getCryptos() {
   const url =
@@ -18,4 +19,22 @@ export async function getCryptos() {
   if (result.success) {
     return result.data;
   }
+}
+
+export async function FetchCurrentCryptoPrice(pair: Pairs) {
+  const { currency, cryptocurrencies } = pair;
+  const url = `https://data-api.coindesk.com/asset/v2/metadata?assets=${cryptocurrencies}&asset_lookup_priority=SYMBOL&quote_asset=${currency}`;
+
+  const data = await fetch(url)
+    .then(async (res) => {
+      if (!res) {
+        throw new Error('no hay datos');
+      }
+      return await res.json();
+    })
+    .then((res) => {
+      return res.Data;
+    })
+    .catch((err) => console.error(err));
+  console.log(data[cryptocurrencies]);
 }

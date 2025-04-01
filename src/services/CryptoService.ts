@@ -36,5 +36,5 @@ export async function FetchCurrentCryptoPrice(pair: Pairs) {
       return res.Data;
     })
     .catch((err) => console.error(err));
-  console.log(data[cryptocurrencies]);
+  console.log(data);
 }

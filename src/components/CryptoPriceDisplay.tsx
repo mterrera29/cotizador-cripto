@@ -4,7 +4,8 @@ import Spinner from './Spinner';
 export default function CryptoPriceDisplay() {
   const result = useCryptoStore((state) => state.result);
   const loading = useCryptoStore((state) => state.loading);
-  const hasResult = !Object.values(result).includes('');
+  console.log(Object.values(result).length);
+  const hasResult = Object.values(result).length === 0 ? false : true;
   console.log(hasResult);
   return (
     <div className='result-wrapper'>

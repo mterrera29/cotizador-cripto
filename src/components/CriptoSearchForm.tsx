@@ -26,6 +26,7 @@ export default function CriptoSearchForm() {
     e.preventDefault();
     if (Object.values(pair).includes('')) {
       setError('Todos los campos son obligatorios');
+      return;
     }
     setError('');
     fetchData(pair);

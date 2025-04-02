@@ -22,4 +22,5 @@ export const PairSchema = z.object({
 export const CryptoPriceSchema = z.object({
   LOGO_URL: z.string(),
   PRICE_USD: z.number(),
+  PRICE_CONVERSION_VALUE: z.number(),
 });

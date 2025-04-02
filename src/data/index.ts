@@ -5,4 +5,5 @@ export const currencies: Currency[] = [
   { code: 'MXN', name: 'Peso Mexicano' },
   { code: 'EUR', name: 'Euro' },
   { code: 'GBP', name: 'Libra Esterlina' },
+  { code: 'ARG', name: 'Peso Argentino' },
 ];

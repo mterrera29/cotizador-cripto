@@ -7,7 +7,7 @@ export async function getCryptos() {
   const data = await fetch(url)
     .then(async (res) => {
       if (!res) {
-        throw new Error('no hay datos aún');
+        throw new Error('Error al cargar los datos');
       }
       return await res.json();
     })
@@ -28,7 +28,7 @@ export async function FetchCurrentCryptoPrice(pair: Pairs) {
   const data = await fetch(url)
     .then(async (res) => {
       if (!res) {
-        throw new Error('no hay datos');
+        throw new Error('Error al cargar los datos');
       }
       return await res.json();
     })
@@ -36,5 +36,4 @@ export async function FetchCurrentCryptoPrice(pair: Pairs) {
       return res.Data;
     })
     .catch((err) => console.error(err));
-  console.log(data);
 }

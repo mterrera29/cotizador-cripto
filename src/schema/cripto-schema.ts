@@ -20,6 +20,6 @@ export const PairSchema = z.object({
 });
 
 export const CryptoPriceSchema = z.object({
-  IMAGEURL: z.string(),
-  PRICE_USD: z.string(),
+  LOGO_URL: z.string(),
+  PRICE_USD: z.number(),
 });

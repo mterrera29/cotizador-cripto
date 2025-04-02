@@ -23,7 +23,7 @@ export async function getCryptos() {
 
 export async function FetchCurrentCryptoPrice(pair: Pairs) {
   const { currency, cryptocurrencies } = pair;
-  const url = `https://data-api.coindesk.com/asset/v2/metadata?assets=${cryptocurrencies}&asset_lookup_priority=SYMBOL&quote_asset=${currency}`;
+  const url = `https://data-api.coindesk.com/asset/v2/metadata?assets=${cryptocurrencies}&asset_lookup_priority=SYMBOL&quote_asset=${currency}&groups=PRICE,BASIC`;
 
   const data = await fetch(url)
     .then(async (res) => {
@@ -36,4 +36,5 @@ export async function FetchCurrentCryptoPrice(pair: Pairs) {
       return res.Data;
     })
     .catch((err) => console.error(err));
+  console.log(data[cryptocurrencies]);
 }

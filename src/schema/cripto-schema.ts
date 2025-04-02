@@ -18,3 +18,8 @@ export const PairSchema = z.object({
   currency: z.string(),
   cryptocurrencies: z.string(),
 });
+
+export const CryptoPriceSchema = z.object({
+  IMAGEURL: z.string(),
+  PRICE_USD: z.string(),
+});

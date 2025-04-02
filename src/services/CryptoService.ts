@@ -1,4 +1,7 @@
-import { CryptoCurrencyResponseArray } from '../schema/cripto-schema';
+import {
+  CryptoCurrencyResponseArray,
+  CryptoPriceSchema,
+} from '../schema/cripto-schema';
 import { Pairs } from '../types';
 
 export async function getCryptos() {
@@ -36,5 +39,7 @@ export async function FetchCurrentCryptoPrice(pair: Pairs) {
       return res.Data;
     })
     .catch((err) => console.error(err));
-  console.log(data[cryptocurrencies]);
+  console.log(data);
+  const result = CryptoPriceSchema.safeParse(data);
+  console.log(result);
 }
